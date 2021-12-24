@@ -5,6 +5,9 @@ class ProductCategory(models.Model):
     name = models.CharField('имя категории', max_length=64)
     description = models.TextField('описание категории', blank=True)
 
+    def __str__(self):
+        return f'{self.name}'
+
 
 class Product(models.Model):
     category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE)

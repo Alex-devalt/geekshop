@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from mainapp.models import ProductCategory, Product
 
 
 # возвращает результат рендеринга html файла, указываем относительный путь от папки templates
@@ -11,8 +12,12 @@ def index(request):
 
 
 def products(request):
+    categories = ProductCategory.objects.all()
+    products = Product.objects.all()
     context = {
-        'page_title': 'продукты'
+        'page_title': 'продукты',
+        'categories': categories,
+        'products': products,
     }
     return render(request, 'mainapp/products.html', context)
 
